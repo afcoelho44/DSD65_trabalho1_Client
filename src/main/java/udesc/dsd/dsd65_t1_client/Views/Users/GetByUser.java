@@ -4,6 +4,7 @@
  */
 package udesc.dsd.dsd65_t1_client.Views.Users;
 
+import javax.swing.JOptionPane;
 import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import static udesc.dsd.dsd65_t1_client.Commons.Constants.DELIMITER;
 import udesc.dsd.dsd65_t1_client.Controllers.UserController;
@@ -115,8 +116,11 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
 
     private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
         String cpf = this.tfCPF.getText();
-        String[] request =new String[]{Constants.UPDATE, cpf};
+         // GET METHOD    {"class", "method", "", "cpf"}
+        String[] request =new String[]{Constants.PERSON_REQUEST, Constants.GET, "", cpf};
         controller.getByIDUser(request);
+        
+         this.taUser.append(controller.getPerson());
     }//GEN-LAST:event_btnSeachActionPerformed
 
     /**
@@ -168,6 +172,6 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
 
     @Override
     public void notifyView(String msg) {
-        this.taUser.append(msg);
+       JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);
     }
 }

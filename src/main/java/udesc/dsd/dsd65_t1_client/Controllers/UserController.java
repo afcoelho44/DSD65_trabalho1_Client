@@ -7,6 +7,7 @@ package udesc.dsd.dsd65_t1_client.Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import udesc.dsd.dsd65_t1_client.Observer.Observer;
 import udesc.dsd.dsd65_t1_client.Services.UserService;
 
@@ -19,6 +20,8 @@ public class UserController {
     private UserService service;
     private List<String> listUsers = new ArrayList<>();
     private List<Observer> obss = new ArrayList<>();
+    
+    private String person;
     
     
     public UserController(){}
@@ -62,12 +65,17 @@ public class UserController {
     public void getByIDUser(String [] request){
           service = new UserService(request);
         
+        String response = service.send();
         
-        String user = service.send();
-        
-        for(Observer obs: obss){
-            obs.notifyView(user);
+        if(response.contains(Constants.OBJECT_RESPONSE)){            
+            this.person = response;
+        }else{
+            for(Observer obs: obss){
+            obs.notifyView(response);
         }
+        
+        }
+        
     }
     public void listUsers(String [] request){
          service = new UserService(request);
@@ -80,7 +88,14 @@ public class UserController {
         for(Observer obs: obss){
             obs.notifyView(list);
         }
+        
     }
+
+    public String getPerson() {
+        return person;
+    }
+    
+    
     
     
     

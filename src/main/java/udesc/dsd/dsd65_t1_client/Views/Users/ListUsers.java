@@ -4,7 +4,9 @@
  */
 package udesc.dsd.dsd65_t1_client.Views.Users;
 
+import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import static udesc.dsd.dsd65_t1_client.Commons.Constants.DELIMITER;
+import udesc.dsd.dsd65_t1_client.Controllers.UserController;
 import udesc.dsd.dsd65_t1_client.Observer.Observer;
 
 /**
@@ -16,7 +18,11 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     /**
      * Creates new form ListUsers
      */
+    
+    private UserController controller = new UserController();
+    
     public ListUsers() {
+        controller.append(this);
         initComponents();
     }
 
@@ -31,8 +37,8 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
 
         jScrollPane1 = new javax.swing.JScrollPane();
         taListUsers = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
         lbDepartment = new javax.swing.JLabel();
+        btnSim = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,9 +46,14 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
         taListUsers.setRows(5);
         jScrollPane1.setViewportView(taListUsers);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lbDepartment.setText("Listar todas as pessoas? ");
 
-        lbDepartment.setText("Escolha um departamento: ");
+        btnSim.setText("Sim");
+        btnSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,12 +62,14 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                        .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbDepartment)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(40, 40, 40))
+                        .addGap(72, 72, 72)
+                        .addComponent(btnSim)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +77,7 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDepartment)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSim))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -72,6 +85,13 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimActionPerformed
+        //LIST METHOD   {"class", "method"}
+        String[] request = {Constants.PERSON_REQUEST, Constants.LIST};
+        
+        controller.listUsers(request);
+    }//GEN-LAST:event_btnSimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,7 +129,7 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnSim;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbDepartment;
     private javax.swing.JTextArea taListUsers;
@@ -118,10 +138,6 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     @Override
     public void notifyView(String msg) {
          String[] list = msg.split(DELIMITER);
-         
-         String number= String.format("%04d", String.valueOf(list.length));
-         
-         this.taListUsers.append(number+"\n");
          
          for(String item: list){
              this.taListUsers.append(item+"\n");

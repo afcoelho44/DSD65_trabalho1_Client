@@ -5,6 +5,7 @@
 package udesc.dsd.dsd65_t1_client.Views;
 
 import udesc.dsd.dsd65_t1_client.Views.Users.CreateUser;
+import udesc.dsd.dsd65_t1_client.Views.Users.GetByUser;
 import udesc.dsd.dsd65_t1_client.Views.Users.ListUsers;
 
 /**
@@ -103,7 +104,7 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_miListEmployeeActionPerformed
 
     private void miGetEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGetEmployeeActionPerformed
-        // TODO add your handling code here:
+        new GetByUser().setVisible(true);
     }//GEN-LAST:event_miGetEmployeeActionPerformed
 
     private void miCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateEmployeeActionPerformed
