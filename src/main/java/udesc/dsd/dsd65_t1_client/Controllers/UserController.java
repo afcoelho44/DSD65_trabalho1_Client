@@ -1,0 +1,90 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package udesc.dsd.dsd65_t1_client.Controllers;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import udesc.dsd.dsd65_t1_client.Observer.Observer;
+import udesc.dsd.dsd65_t1_client.Services.UserService;
+
+/**
+ *
+ * @author ana
+ */
+public class UserController {
+    
+    private UserService service;
+    private List<String> listUsers = new ArrayList<>();
+    private List<Observer> obss = new ArrayList<>();
+    
+    
+    public UserController(){}
+    
+    public void append(Observer obs){
+        obss.add(obs);
+    }
+    
+    public void create(String [] request){
+       
+        service = new UserService(request);
+        
+        
+        String notify = service.send();
+        
+        for(Observer obs: obss){
+            obs.notifyView(notify);
+        }
+    }
+    public void update(String [] request){
+         service = new UserService(request);
+        
+        
+        String notify = service.send();
+        
+        for(Observer obs: obss){
+            obs.notifyView(notify);
+        }
+        
+    }
+    public void delete(String [] request){
+         service = new UserService(request);
+        
+        
+        String notify = service.send();
+        
+        for(Observer obs: obss){
+            obs.notifyView(notify);
+        }
+    }
+    public void getByIDUser(String [] request){
+          service = new UserService(request);
+        
+        
+        String user = service.send();
+        
+        for(Observer obs: obss){
+            obs.notifyView(user);
+        }
+    }
+    public void listUsers(String [] request){
+         service = new UserService(request);
+       
+        
+        String list = service.send();
+       
+        
+        
+        for(Observer obs: obss){
+            obs.notifyView(list);
+        }
+    }
+    
+    
+    
+    
+    
+    
+}
