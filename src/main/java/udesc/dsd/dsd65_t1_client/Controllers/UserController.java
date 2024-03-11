@@ -66,12 +66,13 @@ public class UserController {
           service = new UserService(request);
         
         String response = service.send();
+        String[] msg = response.split(Constants.DELIMITER);
         
         if(response.contains(Constants.OBJECT_RESPONSE)){            
-            this.person = response;
+            this.person = msg[1];
         }else{
             for(Observer obs: obss){
-            obs.notifyView(response);
+            obs.notifyView(msg[1]);
         }
         
         }

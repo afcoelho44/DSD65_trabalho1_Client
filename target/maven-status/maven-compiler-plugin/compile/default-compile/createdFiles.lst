@@ -1,4 +1,5 @@
 udesc/dsd/dsd65_t1_client/Views/Departments/CreateDepartment$2.class
+udesc/dsd/dsd65_t1_client/Views/HomeView$6.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser$3.class
 udesc/dsd/dsd65_t1_client/Views/HomeView$4.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser$1.class
@@ -11,12 +12,14 @@ udesc/dsd/dsd65_t1_client/Views/Users/GetByUser.class
 udesc/dsd/dsd65_t1_client/Services/DepartmentService.class
 udesc/dsd/dsd65_t1_client/Commons/Constants.class
 udesc/dsd/dsd65_t1_client/DSD65_T1_Client.class
+udesc/dsd/dsd65_t1_client/Views/Users/GetByUser$4.class
 udesc/dsd/dsd65_t1_client/Services/Service.class
 udesc/dsd/dsd65_t1_client/Views/Departments/CreateDepartment.class
 udesc/dsd/dsd65_t1_client/Views/Users/ListUsers$2.class
 udesc/dsd/dsd65_t1_client/Views/HomeView$1.class
 udesc/dsd/dsd65_t1_client/Views/Users/GetByUser$2.class
 udesc/dsd/dsd65_t1_client/Controllers/DepartmentController.class
+udesc/dsd/dsd65_t1_client/Views/Departments/ListDepartment$2.class
 udesc/dsd/dsd65_t1_client/Observer/Observer.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser$4.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser$2.class
@@ -30,3 +33,5 @@ udesc/dsd/dsd65_t1_client/Views/Departments/ListDepartment$1.class
 udesc/dsd/dsd65_t1_client/Views/Departments/GetByDepartement.class
 udesc/dsd/dsd65_t1_client/Services/UserService.class
 udesc/dsd/dsd65_t1_client/Views/HomeView.class
+udesc/dsd/dsd65_t1_client/Views/HomeView$5.class
+udesc/dsd/dsd65_t1_client/Views/Users/GetByUser$3.class

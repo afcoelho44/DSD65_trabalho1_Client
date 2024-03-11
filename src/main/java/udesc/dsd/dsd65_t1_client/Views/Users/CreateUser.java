@@ -33,17 +33,11 @@ public class CreateUser extends javax.swing.JFrame implements Observer{
      * /pattern:
     // Person
    
-    // UPDATE METHOD {"class", "method", "", "cpf", "name", "address", "type", "speciality"}
-    // DELETE METHOD {"class", "method", "", "cpf"}
+   
     // GET METHOD    {"class", "method", "", "cpf"}
     // LIST METHOD   {"class", "method", "departmentId"}
 
-    // Department
-    // INSERT METHOD {"class", "method", "", "", "name"}
-    // UPDATE METHOD {"class", "method", "departmentId", "name"}
-    // DELETE METHOD {"class", "method", "departmentId"}
-    // LIST METHOD   {"class", "method"}
-    // GET METHOD    {"class", "method", "departmentId"}
+    
      * 
      */
     @SuppressWarnings("unchecked")
@@ -65,7 +59,7 @@ public class CreateUser extends javax.swing.JFrame implements Observer{
         tfSpeciality = new javax.swing.JTextField();
         lbSpeciality = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbCPF.setText("CPF: ");
 
@@ -175,14 +169,22 @@ public class CreateUser extends javax.swing.JFrame implements Observer{
         String address = this.tfAddress.getText();
         String departmentId = this.tfDepartment_id.getText();
         
+        boolean isManager =this.rbManger.isSelected();
         
-        
-        String type = this.rbManger.isSelected()? Constants.TYPE_MANAGER: Constants.TYPE_EMPLOYEE;
-        String speciality = this.tfSpeciality.getText();
+        String type;
+        String speciality;
+        if(isManager){
+          type =  Constants.TYPE_MANAGER;
+          speciality = " ";
+        }else{
+            type =  Constants.TYPE_EMPLOYEE;
+            speciality = this.tfSpeciality.getText();
+        }
           // INSERT METHOD {"class", "method", "departmentId", "cpf", "name", "address", "type", "speciality"}
         String[] messageData = new String[]{Constants.PERSON_REQUEST,Constants.INSERT,  departmentId, cpf, name, address, type, speciality};
         
         controller.create(messageData);
+        clean();
        
 
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -250,6 +252,14 @@ public class CreateUser extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextField tfSpeciality;
     // End of variables declaration//GEN-END:variables
 
+    public void clean(){
+        this.tfAddress.setText(Constants.EMPTY);
+        this.tfCPF.setText(Constants.EMPTY);
+        this.tfDepartment_id.setText(Constants.EMPTY);
+        this.tfName.setText(Constants.EMPTY);
+        this.tfSpeciality.setText(Constants.EMPTY);
+        bgType.clearSelection();
+    }
     @Override
     public void notifyView(String msg) {
         JOptionPane.showMessageDialog(null, msg);

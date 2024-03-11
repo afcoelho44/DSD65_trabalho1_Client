@@ -40,7 +40,7 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
         lbDepartment = new javax.swing.JLabel();
         btnSim = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         taListUsers.setColumns(20);
         taListUsers.setRows(5);
@@ -89,7 +89,7 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     private void btnSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimActionPerformed
         //LIST METHOD   {"class", "method"}
         String[] request = {Constants.PERSON_REQUEST, Constants.LIST};
-        
+        clean();
         controller.listUsers(request);
     }//GEN-LAST:event_btnSimActionPerformed
 
@@ -135,6 +135,9 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextArea taListUsers;
     // End of variables declaration//GEN-END:variables
 
+    public void clean(){
+        taListUsers.setText("");
+    }
     @Override
     public void notifyView(String msg) {
          String[] list = msg.split(DELIMITER);

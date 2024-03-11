@@ -21,6 +21,7 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
      */
     
     private UserController controller = new UserController();
+    private String type;
     public GetByUser() {
         controller.append(this);
         initComponents();
@@ -35,17 +36,22 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgType = new javax.swing.ButtonGroup();
         tfCPF = new javax.swing.JTextField();
         btnSeach = new javax.swing.JButton();
         lbCPF = new javax.swing.JLabel();
         lbtitulo = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taUser = new javax.swing.JTextArea();
+        tfName = new javax.swing.JTextField();
+        tfAddress = new javax.swing.JTextField();
+        tfDepartment = new javax.swing.JTextField();
+        tfSpeciality = new javax.swing.JTextField();
+        lbName = new javax.swing.JLabel();
+        lbAddress = new javax.swing.JLabel();
+        lbDepartment = new javax.swing.JLabel();
+        lbSpeciality = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnSeach.setText("Buscar");
         btnSeach.addActionListener(new java.awt.event.ActionListener() {
@@ -59,69 +65,151 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
         lbtitulo.setText("Dados do usuário");
 
         btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Deletar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
-        taUser.setColumns(20);
-        taUser.setRows(5);
-        jScrollPane1.setViewportView(taUser);
+        lbName.setText("Nome:");
+
+        lbAddress.setText("Endereço:");
+
+        lbDepartment.setText("Departemento: ");
+
+        lbSpeciality.setText("Turno:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(lbtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(lbCPF)
+                        .addGap(146, 146, 146)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbCPF)
+                            .addComponent(lbName)
+                            .addComponent(lbAddress)
+                            .addComponent(lbDepartment)
+                            .addComponent(lbSpeciality))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSeach))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfDepartment)
+                            .addComponent(tfAddress)
+                            .addComponent(tfName)
+                            .addComponent(tfCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                            .addComponent(tfSpeciality)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(220, 220, 220)
                         .addComponent(btnEdit)
-                        .addGap(149, 149, 149)
-                        .addComponent(btnDelete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addComponent(btnDelete)))
+                .addGap(18, 18, 18)
+                .addComponent(btnSeach)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(182, 333, Short.MAX_VALUE)
+                .addComponent(lbtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(320, 320, 320))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(lbtitulo)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCPF)
                     .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeach))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbName))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAddress))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbDepartment))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSpeciality)
+                    .addComponent(tfSpeciality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete))
-                .addGap(32, 32, 32))
+                .addGap(66, 66, 66))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
+        clean();
         String cpf = this.tfCPF.getText();
          // GET METHOD    {"class", "method", "", "cpf"}
         String[] request =new String[]{Constants.PERSON_REQUEST, Constants.GET, "", cpf};
         controller.getByIDUser(request);
         
-         this.taUser.append(controller.getPerson());
+        String[] atributtePerson = controller.getPerson().split(";");
+        
+        this.tfAddress.setText(atributtePerson[2]);
+        this.tfName.setText(atributtePerson[1]);
+        this.tfDepartment.setText(atributtePerson[5]);
+       
+        boolean isManager= atributtePerson[4].equals(Constants.TYPE_MANAGER);
+        if(isManager){
+            this.type= Constants.TYPE_MANAGER;
+            this.tfSpeciality.setEnabled(false);
+        }else{
+            this.tfSpeciality.setEnabled(true);
+            this.type= Constants.TYPE_EMPLOYEE;
+            this.tfSpeciality.setText(atributtePerson[3]);
+        }
+        
+       
     }//GEN-LAST:event_btnSeachActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // UPDATE METHOD {"class", "method", "", "cpf", "name", "address", "type", "speciality"}
+        String department_id = this.tfDepartment.getText();
+        String cpf = this.tfCPF.getText();
+        String name = this.tfName.getText();
+        String address = this.tfAddress.getText();
+        String speciality = this.tfSpeciality.getText();
+        
+        String[] request = {Constants.PERSON_REQUEST, Constants.UPDATE, department_id, cpf, name, address, type, speciality};
+        
+        controller.update(request);
+        clean();
+        
+        
+        
+        
+      //String[] request = {Constants.PERSON_REQUEST, Constants.UPDATE, "", msg[0], msg[1], msg[2], "type", "speciality"};
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        
+    // DELETE METHOD {"class", "method", "", "cpf"}
+    
+    String[] request = {Constants.PERSON_REQUEST, Constants.DELETE, Constants.EMPTY, this.tfCPF.getText()};
+    
+    controller.delete(request);
+    clean();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,19 +247,33 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup bgType;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSeach;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbAddress;
     private javax.swing.JLabel lbCPF;
+    private javax.swing.JLabel lbDepartment;
+    private javax.swing.JLabel lbName;
+    private javax.swing.JLabel lbSpeciality;
     private javax.swing.JLabel lbtitulo;
-    private javax.swing.JTextArea taUser;
+    private javax.swing.JTextField tfAddress;
     private javax.swing.JTextField tfCPF;
+    private javax.swing.JTextField tfDepartment;
+    private javax.swing.JTextField tfName;
+    private javax.swing.JTextField tfSpeciality;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void notifyView(String msg) {
        JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);
+    }
+
+    private void clean() {
+        this.tfAddress.setText(Constants.EMPTY);
+        this.tfCPF.setText(Constants.EMPTY);
+        this.tfName.setText(Constants.EMPTY);
+        this.tfDepartment.setText(Constants.EMPTY);
+        this.tfSpeciality.setText(Constants.EMPTY);
+        
     }
 }

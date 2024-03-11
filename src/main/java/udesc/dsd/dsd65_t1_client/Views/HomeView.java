@@ -4,6 +4,8 @@
  */
 package udesc.dsd.dsd65_t1_client.Views;
 
+import udesc.dsd.dsd65_t1_client.Views.Departments.CreateDepartment;
+import udesc.dsd.dsd65_t1_client.Views.Departments.ListDepartment;
 import udesc.dsd.dsd65_t1_client.Views.Users.CreateUser;
 import udesc.dsd.dsd65_t1_client.Views.Users.GetByUser;
 import udesc.dsd.dsd65_t1_client.Views.Users.ListUsers;
@@ -33,12 +35,11 @@ public class HomeView extends javax.swing.JFrame {
         MBMenu = new javax.swing.JMenuBar();
         mbEmployees = new javax.swing.JMenu();
         miCreateEmployee = new javax.swing.JMenuItem();
-        miUpdateEmployee = new javax.swing.JMenuItem();
         miListEmployee = new javax.swing.JMenuItem();
         miGetEmployee = new javax.swing.JMenuItem();
-        miDeleteEmployee = new javax.swing.JMenuItem();
         mbDepartments = new javax.swing.JMenu();
         miCreateDepartment = new javax.swing.JMenuItem();
+        miListDepartments = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,9 +52,6 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
         mbEmployees.add(miCreateEmployee);
-
-        miUpdateEmployee.setText("Atualizar usuário");
-        mbEmployees.add(miUpdateEmployee);
 
         miListEmployee.setText("LIstar usuários");
         miListEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -71,15 +69,25 @@ public class HomeView extends javax.swing.JFrame {
         });
         mbEmployees.add(miGetEmployee);
 
-        miDeleteEmployee.setText("Apagar usuário");
-        mbEmployees.add(miDeleteEmployee);
-
         MBMenu.add(mbEmployees);
 
         mbDepartments.setText("Departmentos");
 
         miCreateDepartment.setText("Novo Departamento");
+        miCreateDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCreateDepartmentActionPerformed(evt);
+            }
+        });
         mbDepartments.add(miCreateDepartment);
+
+        miListDepartments.setText("LIstar Departamentos");
+        miListDepartments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListDepartmentsActionPerformed(evt);
+            }
+        });
+        mbDepartments.add(miListDepartments);
 
         MBMenu.add(mbDepartments);
 
@@ -110,6 +118,14 @@ public class HomeView extends javax.swing.JFrame {
     private void miCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateEmployeeActionPerformed
         new CreateUser().setVisible(true);
     }//GEN-LAST:event_miCreateEmployeeActionPerformed
+
+    private void miCreateDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateDepartmentActionPerformed
+        new CreateDepartment().setVisible(true);
+    }//GEN-LAST:event_miCreateDepartmentActionPerformed
+
+    private void miListDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListDepartmentsActionPerformed
+        new ListDepartment().setVisible(true);
+    }//GEN-LAST:event_miListDepartmentsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,9 +168,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JMenu mbEmployees;
     private javax.swing.JMenuItem miCreateDepartment;
     private javax.swing.JMenuItem miCreateEmployee;
-    private javax.swing.JMenuItem miDeleteEmployee;
     private javax.swing.JMenuItem miGetEmployee;
+    private javax.swing.JMenuItem miListDepartments;
     private javax.swing.JMenuItem miListEmployee;
-    private javax.swing.JMenuItem miUpdateEmployee;
     // End of variables declaration//GEN-END:variables
 }

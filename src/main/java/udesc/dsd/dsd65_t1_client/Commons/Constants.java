@@ -21,4 +21,5 @@ public class Constants {
     public static final String PERSON_REQUEST = "PERSON";
     public static final String MESSAGE_RESPONSE = "MESSAGE";
     public static final String OBJECT_RESPONSE = "OBJECT";
+    public static final String EMPTY = "";
 }

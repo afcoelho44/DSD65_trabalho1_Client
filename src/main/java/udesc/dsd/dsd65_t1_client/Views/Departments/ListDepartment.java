@@ -4,14 +4,17 @@
  */
 package udesc.dsd.dsd65_t1_client.Views.Departments;
 
+import java.util.List;
+import javax.swing.JOptionPane;
 import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import udesc.dsd.dsd65_t1_client.Controllers.DepartmentController;
+import udesc.dsd.dsd65_t1_client.Observer.Observer;
 
 /**
  *
  * @author ana
  */
-public class ListDepartment extends javax.swing.JFrame {
+public class ListDepartment extends javax.swing.JFrame implements Observer{
 
     /**
      * Creates new form ListDepartment
@@ -20,16 +23,7 @@ public class ListDepartment extends javax.swing.JFrame {
     
     public ListDepartment() {
         initComponents();
-        
-        String[] request = {Constants.LIST};
-        
-        controller.listDepartment(request);
-        
-        String [] list=controller.getDepartments();
-        
-        for(String s: list){
-           this.taListDepartement.append(s);
-        }
+       
     }
 
     /**
@@ -43,32 +37,67 @@ public class ListDepartment extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         taListDepartement = new javax.swing.JTextArea();
+        lbtitulo = new javax.swing.JLabel();
+        btnSeach = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         taListDepartement.setColumns(20);
         taListDepartement.setRows(5);
         jScrollPane1.setViewportView(taListDepartement);
+
+        lbtitulo.setText("Listar Departamentos? ");
+
+        btnSeach.setText("Sim");
+        btnSeach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeachActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSeach)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbtitulo)
+                    .addComponent(btnSeach))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
+        clean();
+        
+          // LIST METHOD   {"class", "method"}
+        String[] request = {Constants.DEPARTMENT_REQUEST, Constants.LIST};
+        
+        controller.listDepartment(request);
+        
+        List<String> list = controller.getDepartments();
+       
+        for(String s: list){
+           this.taListDepartement.append(s+"\n");
+        }
+    }//GEN-LAST:event_btnSeachActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +135,17 @@ public class ListDepartment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSeach;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbtitulo;
     private javax.swing.JTextArea taListDepartement;
     // End of variables declaration//GEN-END:variables
+
+    public void clean(){
+        this.taListDepartement.setText(" ");
+    }
+    @Override
+    public void notifyView(String msg) {
+       JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);
+    }
 }

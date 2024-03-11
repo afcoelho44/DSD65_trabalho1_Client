@@ -5,7 +5,9 @@
 package udesc.dsd.dsd65_t1_client.Controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import static udesc.dsd.dsd65_t1_client.Commons.Constants.DELIMITER;
 import udesc.dsd.dsd65_t1_client.Observer.Observer;
 import udesc.dsd.dsd65_t1_client.Services.DepartmentService;
@@ -18,7 +20,7 @@ public class DepartmentController {
     private DepartmentService service;
     
     private List<Observer> obss = new ArrayList<>();
-    private String[] departments;
+    private List<String> departments= new ArrayList<>();
     
     
     public DepartmentController(){}
@@ -72,13 +74,24 @@ public class DepartmentController {
     public void listDepartment(String [] request){
          service = new DepartmentService(request);
         
+        String response = service.send();
         
-        String list = service.send();
+        String[] msg = response.split(Constants.DELIMITER);
         
-          this.departments = list.split(DELIMITER);
+        
+        if(response.contains(Constants.OBJECT_RESPONSE)){
+          for(int i=1; i< msg.length; i++){
+              departments.add(msg[i]);
+          }
+        
+        }else{
+            for(Observer obs: obss){
+                obs.notifyView(msg[1]);
+            }
+        }
          
     }
-    public String[] getDepartments(){
+    public List<String> getDepartments(){
         return this.departments;
     }
     

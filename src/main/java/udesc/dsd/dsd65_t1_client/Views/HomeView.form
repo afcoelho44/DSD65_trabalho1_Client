@@ -17,11 +17,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miCreateEmployeeActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miUpdateEmployee">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Atualizar usu&#xe1;rio"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miListEmployee">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LIstar usu&#xe1;rios"/>
@@ -38,11 +33,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miGetEmployeeActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miDeleteEmployee">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Apagar usu&#xe1;rio"/>
-              </Properties>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mbDepartments">
@@ -54,6 +44,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Novo Departamento"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miCreateDepartmentActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="miListDepartments">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="LIstar Departamentos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miListDepartmentsActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
