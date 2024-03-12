@@ -157,7 +157,7 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
-        clean();
+
         String cpf = this.tfCPF.getText();
          // GET METHOD    {"class", "method", "", "cpf"}
         String[] request =new String[]{Constants.PERSON_REQUEST, Constants.GET, "", cpf};

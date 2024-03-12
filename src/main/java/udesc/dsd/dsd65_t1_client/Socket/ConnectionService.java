@@ -25,6 +25,8 @@ public class ConnectionService {
     
     public String SendAndReceiveMessage(String message) throws IOException {
 
+        //179.190.121.102 - maquina Ana
+        // 192.168.0.101- maquina nicolas
         try {
             this.conn = new Socket("192.168.0.101", 65000);
             System.out.println("service connected.");
