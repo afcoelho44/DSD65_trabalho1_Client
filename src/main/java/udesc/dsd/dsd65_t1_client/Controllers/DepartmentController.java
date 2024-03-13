@@ -76,6 +76,7 @@ public class DepartmentController {
         if(response.contains(Constants.OBJECT_RESPONSE)){
             department= value[1];
         }else{
+            department="";
             for(Observer obs: obss){
             obs.notifyView(value[1]);
         }

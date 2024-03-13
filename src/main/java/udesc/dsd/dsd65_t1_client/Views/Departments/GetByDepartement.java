@@ -47,7 +47,7 @@ public class GetByDepartement extends javax.swing.JFrame implements Observer{
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         taEmployeesList.setColumns(20);
         taEmployeesList.setRows(5);
@@ -178,7 +178,7 @@ public class GetByDepartement extends javax.swing.JFrame implements Observer{
         String department_id= this.tfCode.getText();
         String name = this.tfName.getText();
         
-        String[] request = {Constants.DEPARTMENT_REQUEST, Constants.UPDATE, department_id, name};
+        String[] request = {Constants.DEPARTMENT_REQUEST, Constants.UPDATE, department_id, " ", name};
         
         controller.update(request);
         
@@ -188,7 +188,7 @@ public class GetByDepartement extends javax.swing.JFrame implements Observer{
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
     // DELETE METHOD {"class", "method", "departmentId"}
     String department_id = this.tfCode.getText();
-    String[] request = {Constants.DEPARTMENT_REQUEST, Constants.UPDATE, department_id};
+    String[] request = {Constants.DEPARTMENT_REQUEST, Constants.DELETE, department_id};
      
     controller.delete(request);
     clean();

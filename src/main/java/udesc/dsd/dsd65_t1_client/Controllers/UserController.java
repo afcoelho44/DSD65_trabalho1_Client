@@ -35,6 +35,7 @@ public class UserController {
        
         service = new UserService(request);
         
+        // INSERT METHOD {"class", "method", "departmentId", "cpf", "name", "address", "type", "speciality"}
         
         String notify = service.send();
         
@@ -72,6 +73,7 @@ public class UserController {
         if(response.contains(Constants.OBJECT_RESPONSE)){            
             this.person = msg[1];
         }else{
+            person= "";
             for(Observer obs: obss){
             obs.notifyView(msg[1]);
         }

@@ -163,8 +163,10 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
         String[] request =new String[]{Constants.PERSON_REQUEST, Constants.GET, "", cpf};
         controller.getByIDUser(request);
         
-        String[] atributtePerson = controller.getPerson().split(";");
         
+        
+        if(!controller.getPerson().isBlank()){
+        String[] atributtePerson = controller.getPerson().split(";");
         this.tfAddress.setText(atributtePerson[2]);
         this.tfName.setText(atributtePerson[1]);
         this.tfDepartment.setText(atributtePerson[5]);
@@ -179,6 +181,7 @@ public class GetByUser extends javax.swing.JFrame implements Observer{
             this.tfSpeciality.setText(atributtePerson[3]);
         }
         
+        }
        
     }//GEN-LAST:event_btnSeachActionPerformed
 
