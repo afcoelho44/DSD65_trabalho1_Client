@@ -5,6 +5,7 @@
 package udesc.dsd.dsd65_t1_client.Views;
 
 import udesc.dsd.dsd65_t1_client.Views.Departments.CreateDepartment;
+import udesc.dsd.dsd65_t1_client.Views.Departments.GetByDepartement;
 import udesc.dsd.dsd65_t1_client.Views.Departments.ListDepartment;
 import udesc.dsd.dsd65_t1_client.Views.Users.CreateUser;
 import udesc.dsd.dsd65_t1_client.Views.Users.GetByUser;
@@ -39,6 +40,7 @@ public class HomeView extends javax.swing.JFrame {
         miGetEmployee = new javax.swing.JMenuItem();
         mbDepartments = new javax.swing.JMenu();
         miCreateDepartment = new javax.swing.JMenuItem();
+        miGetByIDDepartment = new javax.swing.JMenuItem();
         miListDepartments = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +82,14 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
         mbDepartments.add(miCreateDepartment);
+
+        miGetByIDDepartment.setText("Consultar Departamento");
+        miGetByIDDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miGetByIDDepartmentActionPerformed(evt);
+            }
+        });
+        mbDepartments.add(miGetByIDDepartment);
 
         miListDepartments.setText("LIstar Departamentos");
         miListDepartments.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +137,10 @@ public class HomeView extends javax.swing.JFrame {
         new ListDepartment().setVisible(true);
     }//GEN-LAST:event_miListDepartmentsActionPerformed
 
+    private void miGetByIDDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGetByIDDepartmentActionPerformed
+        new GetByDepartement().setVisible(true);
+    }//GEN-LAST:event_miGetByIDDepartmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -168,6 +182,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JMenu mbEmployees;
     private javax.swing.JMenuItem miCreateDepartment;
     private javax.swing.JMenuItem miCreateEmployee;
+    private javax.swing.JMenuItem miGetByIDDepartment;
     private javax.swing.JMenuItem miGetEmployee;
     private javax.swing.JMenuItem miListDepartments;
     private javax.swing.JMenuItem miListEmployee;

@@ -93,9 +93,11 @@ public class ListDepartment extends javax.swing.JFrame implements Observer{
         controller.listDepartment(request);
         
         List<String> list = controller.getDepartments();
-       
-        for(String s: list){
-           this.taListDepartement.append(s+"\n");
+        
+        if(!list.isEmpty()){
+            for(String s: list){
+               this.taListDepartement.append(s+"\n");
+            }
         }
     }//GEN-LAST:event_btnSeachActionPerformed
 

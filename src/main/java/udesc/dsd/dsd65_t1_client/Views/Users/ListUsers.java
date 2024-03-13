@@ -4,6 +4,8 @@
  */
 package udesc.dsd.dsd65_t1_client.Views.Users;
 
+import java.util.List;
+import javax.swing.JOptionPane;
 import udesc.dsd.dsd65_t1_client.Commons.Constants;
 import static udesc.dsd.dsd65_t1_client.Commons.Constants.DELIMITER;
 import udesc.dsd.dsd65_t1_client.Controllers.UserController;
@@ -91,6 +93,16 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
         String[] request = {Constants.PERSON_REQUEST, Constants.LIST};
         clean();
         controller.listUsers(request);
+        
+        List<String> list = controller.getListUsers();
+        
+        if(!list.isEmpty()){
+             for(String s: list){
+               this.taListUsers.append(s+"\n");
+            }
+        }
+        
+        
     }//GEN-LAST:event_btnSimActionPerformed
 
     /**
@@ -140,10 +152,6 @@ public class ListUsers extends javax.swing.JFrame implements Observer{
     }
     @Override
     public void notifyView(String msg) {
-         String[] list = msg.split(DELIMITER);
-         
-         for(String item: list){
-             this.taListUsers.append(item+"\n");
-         }
+         JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);
     }
 }

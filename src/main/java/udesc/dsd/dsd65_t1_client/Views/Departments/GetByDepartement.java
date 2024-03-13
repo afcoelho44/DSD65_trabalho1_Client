@@ -4,17 +4,24 @@
  */
 package udesc.dsd.dsd65_t1_client.Views.Departments;
 
+import javax.swing.JOptionPane;
+import udesc.dsd.dsd65_t1_client.Commons.Constants;
+import udesc.dsd.dsd65_t1_client.Controllers.DepartmentController;
+import udesc.dsd.dsd65_t1_client.Observer.Observer;
+
 /**
  *
  * @author ana
  */
-public class GetByDepartement extends javax.swing.JFrame {
+public class GetByDepartement extends javax.swing.JFrame implements Observer{
 
     /**
      * Creates new form GetByDepartement
      */
+    private DepartmentController controller= new DepartmentController();
     public GetByDepartement() {
         initComponents();
+        controller.append(this);
     }
 
     /**
@@ -26,21 +33,166 @@ public class GetByDepartement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tfCode = new javax.swing.JTextField();
+        tfName = new javax.swing.JTextField();
+        tfManager = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taEmployeesList = new javax.swing.JTextArea();
+        lbTitulo = new javax.swing.JLabel();
+        lbCode = new javax.swing.JLabel();
+        btnSeach = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbEmployees = new javax.swing.JLabel();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        taEmployeesList.setColumns(20);
+        taEmployeesList.setRows(5);
+        jScrollPane1.setViewportView(taEmployeesList);
+
+        lbTitulo.setText("Dados do Departamento");
+
+        lbCode.setText("Código:");
+
+        btnSeach.setText("Buscar");
+        btnSeach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeachActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("Gerente:");
+
+        lbEmployees.setText("Funcionários:");
+
+        btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Deletar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbCode)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(lbEmployees))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(btnSeach))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1)
+                            .addComponent(tfManager)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDelete)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbTitulo)
+                .addGap(261, 261, 261))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lbTitulo)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbCode)
+                    .addComponent(btnSeach))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfManager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbEmployees)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdit)
+                    .addComponent(btnDelete))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
+        // GET METHOD    {"class", "method", "departmentId"}
+        String id = this.tfCode.getText();
+        
+        String[] request= {Constants.DEPARTMENT_REQUEST, Constants.GET, id};
+        
+        controller.getByIDDepartment(request);
+        
+        String department= controller.getDepartment();
+        
+        if(!department.isBlank()){
+        
+              String[] atributtes= department.split(",");
+              
+              this.tfName.setText(atributtes[1]);
+              this.tfManager.setText(atributtes[2]);
+              this.taEmployeesList.append(atributtes[3]);
+              
+              this.tfManager.setEditable(false);
+              this.taEmployeesList.setEditable(false);
+              
+        }
+    }//GEN-LAST:event_btnSeachActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // UPDATE METHOD {"class", "method", "departmentId", "name"}
+        String department_id= this.tfCode.getText();
+        String name = this.tfName.getText();
+        
+        String[] request = {Constants.DEPARTMENT_REQUEST, Constants.UPDATE, department_id, name};
+        
+        controller.update(request);
+        
+        clean();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    // DELETE METHOD {"class", "method", "departmentId"}
+    String department_id = this.tfCode.getText();
+    String[] request = {Constants.DEPARTMENT_REQUEST, Constants.UPDATE, department_id};
+     
+    controller.delete(request);
+    clean();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +230,29 @@ public class GetByDepartement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnSeach;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbCode;
+    private javax.swing.JLabel lbEmployees;
+    private javax.swing.JLabel lbTitulo;
+    private javax.swing.JTextArea taEmployeesList;
+    private javax.swing.JTextField tfCode;
+    private javax.swing.JTextField tfManager;
+    private javax.swing.JTextField tfName;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notifyView(String msg) {
+        JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);
+    }
+    public void clean(){
+        this.tfCode.setText("");
+        this.tfManager.setText("");
+        this.tfName.setText("");
+        this.taEmployeesList.setText("");
+    }
 }

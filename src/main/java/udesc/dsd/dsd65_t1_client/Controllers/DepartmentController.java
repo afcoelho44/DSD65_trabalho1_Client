@@ -18,7 +18,7 @@ import udesc.dsd.dsd65_t1_client.Services.DepartmentService;
  */
 public class DepartmentController {
     private DepartmentService service;
-    
+    private String department;
     private List<Observer> obss = new ArrayList<>();
     private List<String> departments= new ArrayList<>();
     
@@ -65,11 +65,22 @@ public class DepartmentController {
           service = new DepartmentService(request);
         
         
-        String department = service.send();
+        String response = service.send();
+        /*
+        {"1", "Security", "Sem Gerente", [pessoa;pessoa;pessoa]}
+            split(", ")
+        */
         
-        for(Observer obs: obss){
-            obs.notifyView(department);
+        String[] value = response.split(Constants.DELIMITER);
+        
+        if(response.contains(Constants.OBJECT_RESPONSE)){
+            department= value[1];
+        }else{
+            for(Observer obs: obss){
+            obs.notifyView(value[1]);
         }
+        }
+        
     }
     public void listDepartment(String [] request){
          service = new DepartmentService(request);
@@ -93,6 +104,10 @@ public class DepartmentController {
     }
     public List<String> getDepartments(){
         return this.departments;
+    }
+
+    public String getDepartment() {
+        return department;
     }
     
     

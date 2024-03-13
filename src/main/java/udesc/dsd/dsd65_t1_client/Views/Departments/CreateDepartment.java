@@ -32,8 +32,6 @@ public class CreateDepartment extends javax.swing.JFrame implements Observer{
      * 
      * // Department
     // INSERT METHOD {"class", "method", "", "", "name"}
-    // UPDATE METHOD {"class", "method", "departmentId", "name"}
-    // DELETE METHOD {"class", "method", "departmentId"}
     // LIST METHOD   {"class", "method"}
     // GET METHOD    {"class", "method", "departmentId"}
      * 
@@ -94,6 +92,8 @@ public class CreateDepartment extends javax.swing.JFrame implements Observer{
         String[] messageData = new String[]{Constants.DEPARTMENT_REQUEST, Constants.INSERT," ", " ", name};
         
         controller.create(messageData);
+        
+        clean();
        
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -138,6 +138,9 @@ public class CreateDepartment extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextField tfName;
     // End of variables declaration//GEN-END:variables
 
+    public void clean(){
+        this.tfName.setText(Constants.EMPTY);
+    }
     @Override
     public void notifyView(String msg) {
         JOptionPane.showMessageDialog(null, msg, "Notificação", HEIGHT);

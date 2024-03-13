@@ -28,7 +28,7 @@ public class ConnectionService {
         //179.190.121.102 - maquina Ana
         // 192.168.0.101- maquina nicolas
         try {
-            this.conn = new Socket("192.168.0.101", 65000);
+            this.conn = new Socket("localhost", 65000);
             System.out.println("service connected.");
 
             setOut();

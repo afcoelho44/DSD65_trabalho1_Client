@@ -48,6 +48,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miCreateDepartmentActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="miGetByIDDepartment">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar Departamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miGetByIDDepartmentActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miListDepartments">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LIstar Departamentos"/>
