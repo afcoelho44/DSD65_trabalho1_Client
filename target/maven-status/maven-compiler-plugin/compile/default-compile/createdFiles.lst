@@ -16,6 +16,7 @@ udesc/dsd/dsd65_t1_client/Views/Departments/CreateDepartment.class
 udesc/dsd/dsd65_t1_client/Views/HomeView$1.class
 udesc/dsd/dsd65_t1_client/Views/Users/GetByUser$2.class
 udesc/dsd/dsd65_t1_client/Controllers/DepartmentController.class
+udesc/dsd/dsd65_t1_client/Views/Login.class
 udesc/dsd/dsd65_t1_client/Observer/Observer.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser$2.class
 udesc/dsd/dsd65_t1_client/Views/Users/CreateUser.class
@@ -23,6 +24,7 @@ udesc/dsd/dsd65_t1_client/Views/Users/ListUsers$1.class
 udesc/dsd/dsd65_t1_client/Views/Departments/GetByDepartement$2.class
 udesc/dsd/dsd65_t1_client/Views/Departments/CreateDepartment$1.class
 udesc/dsd/dsd65_t1_client/Controllers/UserController.class
+udesc/dsd/dsd65_t1_client/Views/Login$1.class
 udesc/dsd/dsd65_t1_client/Views/HomeView$3.class
 udesc/dsd/dsd65_t1_client/Views/HomeView$2.class
 udesc/dsd/dsd65_t1_client/Views/Departments/ListDepartment$1.class

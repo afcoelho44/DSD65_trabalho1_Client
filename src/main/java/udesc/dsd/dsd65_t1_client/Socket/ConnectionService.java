@@ -22,13 +22,15 @@ public class ConnectionService {
     
     private  Socket conn ;
             
+    private static String ip;
+    
     
     public String SendAndReceiveMessage(String message) throws IOException {
 
         //179.190.121.102 - maquina Ana
         // 192.168.0.101- maquina nicolas
         try {
-            this.conn = new Socket("localhost", 65000);
+            this.conn = new Socket(ip, 65000);
             System.out.println("service connected.");
 
             setOut();
@@ -57,6 +59,10 @@ public class ConnectionService {
     }
     public void setOut() throws IOException{
         this.out= new PrintWriter(conn.getOutputStream(), true); // true para autoflush
+    }
+    
+    public void setIP(String ip){
+        this.ip=ip;
     }
     
 }
