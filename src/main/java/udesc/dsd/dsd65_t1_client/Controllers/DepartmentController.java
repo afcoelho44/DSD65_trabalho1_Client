@@ -74,9 +74,9 @@ public class DepartmentController {
         String[] value = response.split(Constants.DELIMITER);
         
         if(response.contains(Constants.OBJECT_RESPONSE)){
-            department= value[1];
+            this.department= value[1];
         }else{
-            department="";
+            this.department="";
             for(Observer obs: obss){
             obs.notifyView(value[1]);
         }
